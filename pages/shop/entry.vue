@@ -23,7 +23,7 @@
       <option>ホテル</option>
       <option>デパート</option>
     </select>
-    <p>{{ selected }}</p>
+    <p>{{ categories.selected }}</p>
     </div>
 
     <div class="entry-input-row">
