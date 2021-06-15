@@ -14,8 +14,16 @@
     </div>
 
     <div class="entry-input-row">
-      <span class="enrty-label">カテゴリ</span
-      ><input type="text" v-model="shop.category" />
+      <span class="enrty-label">カテゴリ</span>
+
+      <select v-model="categories.selected">
+      <option disabled>Please select one</option>
+      <option>カフェ</option>
+      <option>ストア</option>
+      <option>ホテル</option>
+      <option>デパート</option>
+    </select>
+    <p>{{ selected }}</p>
     </div>
 
     <div class="entry-input-row">
@@ -47,6 +55,9 @@ export default Vue.extend({
       description: '',
       category: '',
     },
+    categories: {
+      selected: '',
+    },
     entryDocId: '',
     errorMessage: '',
     reset: true,
@@ -66,14 +77,14 @@ export default Vue.extend({
           shopName: this.shop.shopName,
           description: this.shop.description,
           image: this.shop.image,
-          category: this.shop.category,
+          category: this.categories.selected,
         })
         .then((ref) => {
           this.entryDocId = ref.id
           this.shop.shopName = ''
           this.shop.description = ''
           this.shop.image = ''
-          this.shop.category = ''
+          this.categories.selected = ''
 
           this.inputFileReset()
         })
